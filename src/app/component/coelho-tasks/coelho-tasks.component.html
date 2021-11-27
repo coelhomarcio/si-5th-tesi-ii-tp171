@@ -1,0 +1,30 @@
+<main>
+	<section>
+		<div>
+			<h2>Adicionar tarefa</h2>
+			<form (ngSubmit)="addTask()">
+				<label for="task">Tarefa</label>
+				<input type="text" id="task" name="task" [(ngModel)]="task">
+				<input type="submit" value="+">
+			</form>
+			<h2>Lista de tarefas</h2>
+			<table *ngIf="isTask">
+				<thead>
+					<tr>
+						<th>Tarefa</th>
+						<th>Excluir</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let task of tasks, index as i">
+						<td>{{ task }}</td>
+						<td>
+							<button (click)="deleteTask(i)">X</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p *ngIf="!isTask">Vazia</p>
+		</div>
+	</section>
+</main>
